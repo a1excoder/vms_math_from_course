@@ -212,15 +212,19 @@ uint8_t interpret(struct vm_state data) {
             break;
         case BC_ISUB:
             my_funcs[BC_ISUB](&data);
+            stack_values--;
             break;
         case BC_IMUL:
             my_funcs[BC_IMUL](&data);
+            stack_values--;
             break;
         case BC_IDIV:
             my_funcs[BC_IDIV](&data);
+            stack_values--;
             break;
         case BC_ICMP:
             my_funcs[BC_ICMP](&data);
+            stack_values--;
             break;
         case BC_INEG:
             my_funcs[BC_INEG](&data);
@@ -229,6 +233,7 @@ uint8_t interpret(struct vm_state data) {
             my_funcs[BC_SWAP](&data);
         case BC_DUP:
             my_funcs[BC_DUP](&data);
+            stack_values++;
         case BC_STOP:
             stack_destroy(&data);
             return 0;
